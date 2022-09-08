@@ -1,8 +1,5 @@
-void setup(){
-	pinMode(PB2,OUTPUT);
-	pinMode(PB4,OUTPUT);
-	pinMode(PB1,OUTPUT);
-}
+#include "header.h"
+
 void loop(){
 	analogWrite(PB2,221);
 	analogWrite(PB4,91);

@@ -8,10 +8,10 @@ int count = 0;//何個目の明滅タイプか見るやつ
 Data data[] = new Data[5];//Data型の構造体っぽいやつ(クラス)を作成
 
 class Data{
-    intflag;
-    intv1;
-    intv2;
-    intv3;
+    int flag;
+    int v1;
+    int v2;
+    int v3;
 }
 
 void write(int flag,int v1,int v2,int v3) {//一気にシリアルに書いてくれるやつ
@@ -22,7 +22,7 @@ void write(int flag,int v1,int v2,int v3) {//一気にシリアルに書いて�
 }
 
 void delay(int ms) {
-    intm1 = millis();
+    int m1 = millis();
     while(millis() < m1 + ms) {
         }
 }
@@ -39,7 +39,7 @@ void saving(String text,String file) {
 
 /*/////////////////////////////こっから本題///////////////////////*/
 void setup(){
-	myPort = new Serial(this, "COM3", 9600);
+	myPort = new Serial(this, "COM4", 9600);
 	for(int i = 0; i< 5; i++){//
 		data[i] = new Data();
 	}
