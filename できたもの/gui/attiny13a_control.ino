@@ -8,6 +8,7 @@ constexpr int BLUE = 9;
 void setup() {	
 	// initialize digital pin LED_BUILTIN as an output.
 	pinMode(CHECK,OUTPUT);
+	pinMode(LED_BUILTIN,OUTPUT);
 	pinMode(RED,OUTPUT);
 	pinMode(GREEN,OUTPUT);
 	pinMode(BLUE,OUTPUT);
@@ -25,11 +26,12 @@ byte duty(byte val){
 void loop() {
 	//digitalWrite(CHECK, HIGH);
 	Serial.write(0);//準備okのサイン
-	
+	if(flag) digitalWrite(LED_BUILTIN, HIGH);
+	else	 digitalWrite(LED_BUILTIN, LOW);
 	analogWrite(RED,duty(r));
 	analogWrite(GREEN,duty(g));
 	analogWrite(BLUE,duty(b));
-		
+	flag = 0;	
 	
 	delay(10);
 }
