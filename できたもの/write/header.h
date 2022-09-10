@@ -2,10 +2,12 @@ constexpr double ar = 0.7;
 constexpr double ag = 1.0;
 constexpr double ab = 1.0;
 
+constexpr byte RED = 11, GREEN = 10, BLUE = 9;
+
 void setup() {
-	pinMode(PB2,OUTPUT);
-	pinMode(PB4,OUTPUT);
-	pinMode(PB1,OUTPUT);
+	pinMode(RED,OUTPUT);
+	pinMode(GREEN,OUTPUT);
+	pinMode(BLUE,OUTPUT);
 }
 
 void led_red(byte value, long ms, byte pin) {
@@ -37,7 +39,7 @@ byte duty(byte val){
 }
 
 void set_led(byte r, byte g, byte b, long time){
-	analogWrite(PB4, duty(g * ag));
-	analogWrite(PB1, duty(b * ab));
-	led_red(duty(r * (g == b == 0 ? 1.0 : ar)), time, PB2);
+	analogWrite(GREEN, duty(g * ag));
+	analogWrite(BLUE, duty(b * ab));
+	led_red(duty(r * (g == b == 0 ? 1.0 : ar)), time, RED);
 }
