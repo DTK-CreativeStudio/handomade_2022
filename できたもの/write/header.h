@@ -1,8 +1,8 @@
-constexpr double ar = 0.7;
+constexpr double ar = 1.0;
 constexpr double ag = 1.0;
 constexpr double ab = 1.0;
 
-constexpr byte RED = 11, GREEN = 10, BLUE = 9;
+constexpr byte RED = 11, GREEN = 9, BLUE = 10;
 
 void setup() {
 	pinMode(RED,OUTPUT);
