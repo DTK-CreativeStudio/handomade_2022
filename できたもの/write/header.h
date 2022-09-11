@@ -16,13 +16,13 @@ void led_red(byte value, long ms, byte pin) {
 	}
 	else{
         constexpr byte INTERVAL_MS = 10, INTERVAL_NS = INTERVAL_MS * 1000;
-		const long hns = INTERVAL_NS * (value / 255.0), lns = INTERVAL_NS - hns;
+		const long hus = INTERVAL_NS * (value / 255.0), lus = INTERVAL_NS - hus;
 
 		for(; ms > INTERVAL_MS; ms -= INTERVAL_MS) {
 			digitalWrite(pin, HIGH);
-			delayMicroseconds(hns);
+			delayMicroseconds(hus);
 			digitalWrite(pin, LOW);
-			delayMicroseconds(lns);
+			delayMicroseconds(lus);
 		}
 		if(ms < INTERVAL_MS){
 			digitalWrite(pin, LOW);
