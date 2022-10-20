@@ -1,5 +1,5 @@
 {
-    "port": "COM4",
+    "port": "COM5",
     "board": "arduino:avr:uno",
     "sketch": "ハンドメイド班(マイコン制御)\\attiny13a_control\\attiny13a_control.ino"
 }
