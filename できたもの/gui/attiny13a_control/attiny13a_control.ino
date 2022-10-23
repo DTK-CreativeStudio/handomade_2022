@@ -5,7 +5,6 @@ constexpr int GREEN = 10;
 constexpr int BLUE = 9;
 
 void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
   pinMode(CHECK, OUTPUT);
   pinMode(RED, OUTPUT);
   pinMode(GREEN, OUTPUT);
@@ -15,9 +14,6 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  //digitalWrite(CHECK, HIGH);
-  Serial.write(0);//準備okのサイン
-
   analogWrite(RED, r);
   analogWrite(GREEN, g);
   analogWrite(BLUE, b);
@@ -32,7 +28,5 @@ void serialEvent() { //シリアルに4バイト以上の値が送られてき�
     r = Serial.read();
     g = Serial.read();
     b = Serial.read();
-
-
   }
 }
