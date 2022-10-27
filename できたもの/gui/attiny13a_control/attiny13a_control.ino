@@ -1,34 +1,38 @@
-#include <SPI.h>                  // ライブラリのインクルード
-#include <nRF24L01.h>
-#include <RF24.h>
-RF24 radio(7, 8);                 // CE,CSNピンの指定
-const byte address[6] = "00001";  // データを受信するアドレス
-int radicon[4] = {};
+byte r = 0, g = 0, b = 0, flag = 0;
+constexpr int CHECK = 13;
+constexpr int RED = 11;
+constexpr int GREEN = 10;
+constexpr int BLUE = 9;
+
 void setup() {
-   Serial.begin(9600);
-   pinMode(10,OUTPUT);
-   radio.begin();                      // 無線オブジェクトの初期化
-   radio.openReadingPipe(0, address);  // データ受信アドレスを指定
-   radio.setPALevel(RF24_PA_MIN);      // 出力を最小に
-   radio.startListening();             // 受信側として設定
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(CHECK, OUTPUT);
+  pinMode(RED, OUTPUT);
+  pinMode(GREEN, OUTPUT);
+  pinMode(BLUE, OUTPUT);
+  Serial.begin(9600);
 }
- void loop() {
-  digitalWrite(10,LOW);
-   while(radio.available()) {                         // 受信データの確認
-     radio.read(&radicon, sizeof(radicon));
-     Serial.print("right_x:");
-     Serial.print(radicon[0]);
-     Serial.print("\t");
-     Serial.print("right_y:");
-     Serial.print(radicon[1]);
-     Serial.print("\t");
-     Serial.print("left_x:");
-     Serial.print(radicon[3]);
-     Serial.print("\t");
-     Serial.print("left_y:");
-     Serial.print(radicon[2]);
-     Serial.print("\t");
-     Serial.println("");
-     }
-    delay(10);
+
+// the loop function runs over and over again forever
+void loop() {
+  //digitalWrite(CHECK, HIGH);
+  Serial.write(0);//準備okのサイン
+
+  analogWrite(RED, r);
+  analogWrite(GREEN, g);
+  analogWrite(BLUE, b);
+
+
+  delay(10);
+}
+/*/////////////////////////////////////////*/
+void serialEvent() { //シリアルに4バイト以上の値が送られてきたときに行う処理
+  if (Serial.available() >= 4) {
+    flag = Serial.read();
+    r = Serial.read();
+    g = Serial.read();
+    b = Serial.read();
+
+
+  }
 }
